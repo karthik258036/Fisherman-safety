@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Help</title>
+
+    <link rel="stylesheet"
+    href="style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div>
+            <h1>WEATHER CLOUD</h1>
+            <p>Emergency Support System</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="weather.html">Weather</a>
+            <a href="alerts.html">Alerts</a>
+            <a href="emergency.html">Emergency</a>
+        </nav>
+
+    </header>
+
+    <section class="dashboard">
+
+        <div class="card">
+
+            <h2>🚔 Police</h2>
+
+            <div class="value">
+                100
+            </div>
+
+            <button onclick="callPolice()">
+                Call Now
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🚑 Ambulance</h2>
+
+            <div class="value">
+                108
+            </div>
+
+            <button onclick="callAmbulance()">
+                Call Now
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>🛟 Coast Guard</h2>
+
+            <div class="value">
+                1093
+            </div>
+
+            <button onclick="callCoastGuard()">
+                Call Now
+            </button>
+
+        </div>
+
+        <div class="card alert">
+
+            <h2>Emergency SOS</h2>
+
+            <p>
+                Press button during emergency situations.
+            </p>
+
+            <button onclick="sendSOS()">
+                SEND SOS
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="forecast">
+
+        <div class="forecast-card">
+
+            <h3>Nearest Hospital</h3>
+
+            <p>Kakinada Government Hospital</p>
+
+        </div>
+
+        <div class="forecast-card">
+
+            <h3>Rescue Team</h3>
+
+            <p>Available 24/7</p>
+
+        </div>
+
+        <div class="forecast-card">
+
+            <h3>Emergency Boats</h3>
+
+            <p>5 Active Units</p>
+
+        </div>
+
+        <div class="forecast-card">
+
+            <h3>Support Status</h3>
+
+            <p>Operational</p>
+
+        </div>
+
+    </section>
+
+
+
+    <script src="js/script.js"></script>
+
+    <script>
+
+        function callPolice(){
+
+            alert("Calling Police: 100");
+
+        }
+
+        function callAmbulance(){
+
+            alert("Calling Ambulance: 108");
+
+        }
+
+        function callCoastGuard(){
+
+            alert("Calling Coast Guard: 1093");
+
+        }
+
+        function sendSOS(){
+
+            alert(
+                "SOS Alert Sent Successfully!"
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

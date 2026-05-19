@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Fishermen Safety Dashboard
+    </title>
+
+    <link rel="stylesheet"
+    href="style.css">
+
+</head>
+
+<body>
+
+    <!-- LANGUAGE POPUP -->
+
+    <div class="language-popup"
+    id="languagePopup">
+
+        <div class="popup-box">
+
+            <h2>
+                Select Language
+            </h2>
+
+            <div class="popup-buttons">
+
+                <button
+                onclick="translateLanguage('en')">
+
+                    English
+
+                </button>
+
+                <button
+                onclick="translateLanguage('te')">
+
+                    తెలుగు
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- HIDDEN GOOGLE TRANSLATE -->
+
+    <div id="google_translate_element"></div>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div>
+
+            <h1>
+                WEATHER CLOUD
+            </h1>
+
+            <p>
+                Kakinada Fishermen Safety System
+            </p>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+
+                Home
+
+            </a>
+
+            <a href="weather.html">
+
+                Weather
+
+            </a>
+
+            <a href="alerts.html">
+
+                Alerts
+
+            </a>
+
+            <a href="zones.html">
+
+                Zones
+
+            </a>
+
+            <a href="emergency.html">
+
+                Emergency
+
+            </a>
+
+            <a href="tips.html">
+
+                Tips
+
+            </a>
+
+        </nav>
+
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <!-- LEFT SIDE -->
+
+        <div class="hero-content">
+
+            <h2>
+
+                Fishermen Safety &
+                Marine Weather System
+
+            </h2>
+
+            <p>
+
+                Real-time marine alerts,
+                weather monitoring,
+                fishing zone awareness,
+                and emergency support
+                for fishermen in coastal regions.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="weather.html">
+
+                    <button>
+
+                        Weather Report
+
+                    </button>
+
+                </a>
+
+                <a href="alerts.html">
+
+                    <button class="alert-btn">
+
+                        Emergency Alerts
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE IMAGE -->
+
+        <div class="hero-image">
+
+            <img
+
+            src=
+"https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+
+            alt="Ocean Image">
+
+        </div>
+
+    </section>
+
+    <!-- INFO SECTION -->
+
+    <section class="dashboard">
+
+        <div class="card">
+
+            <h2>
+                🌊 Sea Conditions
+            </h2>
+
+            <p>
+
+                Monitor tides,
+                wave conditions,
+                and wind speed before fishing.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                📍 Fishing Zones
+            </h2>
+
+            <p>
+
+                Check safe and restricted
+                fishing areas near coastal waters.
+
+            </p>
+
+        </div>
+
+        <div class="card alert">
+
+            <h2>
+                ⚠ Safety Alerts
+            </h2>
+
+            <p>
+
+                Get cyclone warnings,
+                storm alerts,
+                and emergency notifications.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+    <!-- GOOGLE TRANSLATE -->
+
+    <script>
+
+        function googleTranslateElementInit(){
+
+            new google.translate.TranslateElement(
+
+                {
+
+                    pageLanguage:'en',
+
+                    includedLanguages:'en,te',
+
+                    autoDisplay:false
+
+                },
+
+                'google_translate_element'
+
+            );
+
+        }
+
+        /* LANGUAGE FUNCTION */
+
+        function translateLanguage(lang){
+
+            const select =
+            document.querySelector(".goog-te-combo");
+
+            if(select){
+
+                select.value = lang;
+
+                select.dispatchEvent(
+                    new Event('change')
+                );
+            }
+
+            document.getElementById(
+                "languagePopup"
+            ).style.display = "none";
+
+        }
+
+    </script>
+
+    <script
+
+    src=
+"//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+
+    </script>
+
+</body>
+
+</html>
