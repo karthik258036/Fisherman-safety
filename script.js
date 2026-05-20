@@ -1,6 +1,9 @@
 const apiKey = "e2062d25286c4bc8ba2161804261905";
 
-const city = "Kakinada";
+const city =
+localStorage.getItem(
+    "userLocation"
+) || "Kakinada";
 
 /* GET WEATHER DATA */
 
@@ -90,6 +93,25 @@ Avoid deep sea fishing today.
 
 Stay near coastal zones.`
     );
+
+}
+/* SAVE LOCATION */
+
+function saveLocation(){
+
+    const location =
+    document.getElementById(
+        "locationSelect"
+    ).value;
+
+    localStorage.setItem(
+        "userLocation",
+        location
+    );
+
+    document.getElementById(
+        "locationPopup"
+    ).style.display = "none";
 
 }
 
