@@ -1,24 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport"
     content="width=device-width, initial-scale=1.0">
 
     <title>Emergency Help</title>
 
-    <link rel="stylesheet"
-    href="style.css">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
 
+        body{
+            background:#062b45;
+            color:white;
+            min-height:100vh;
+        }
+
+        header{
+            background:#0077b6;
+            color:white;
+            padding:20px 40px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        header h1{
+            font-size:28px;
+        }
+
+        header p{
+            margin-top:5px;
+            font-size:15px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-weight:bold;
+        }
+
+        nav a:hover{
+            text-decoration:underline;
+        }
+
+        .dashboard{
+            min-height:80vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:30px;
+            flex-wrap:wrap;
+            padding:40px;
+        }
+
+        .card{
+            width:230px;
+            background:#0077b6;
+            padding:35px 20px;
+            border-radius:18px;
+            text-align:center;
+            box-shadow:0 6px 20px rgba(0,0,0,0.15);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h2{
+            color:white;
+            margin-bottom:20px;
+            font-size:24px;
+        }
+
+        .value{
+            font-size:32px;
+            font-weight:bold;
+            color:#222;
+            margin-bottom:22px;
+        }
+
+        button{
+            background:white;
+            color:#0077b6;
+            border:none;
+            padding:12px 22px;
+            border-radius:25px;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#caf0f8;
+        }
+
+        .alert{
+            background:#d62828;
+        }
+
+        .alert button{
+            color:#d62828;
+        }
+
+        .alert p{
+            margin-bottom:20px;
+            line-height:1.5;
+            color:white;
+        }
+
+        .status-message{
+            display:none;
+            max-width:600px;
+            margin:0 auto 30px;
+            background:#0077b6;
+            color:white;
+            padding:15px;
+            border-radius:10px;
+            text-align:center;
+            font-weight:bold;
+        }
+
+        @media(max-width:768px){
+            header{
+                flex-direction:column;
+                text-align:center;
+                gap:15px;
+            }
+
+            nav a{
+                margin:0 8px;
+            }
+
+            .dashboard{
+                min-height:auto;
+                padding:30px 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-
         <div>
             <h1>WEATHER CLOUD</h1>
             <p>Emergency Support System</p>
@@ -30,139 +162,114 @@
             <a href="alerts.html">Alerts</a>
             <a href="emergency.html">Emergency</a>
         </nav>
-
     </header>
 
     <section class="dashboard">
 
         <div class="card">
-
-            <h2>🚔 Police</h2>
-
-            <div class="value">
-                100
-            </div>
-
-            <button onclick="callPolice()">
-                Call Now
-            </button>
-
+            <h2>Police</h2>
+            <div class="value">100</div>
+            <button onclick="callPolice()">Call Now</button>
         </div>
 
         <div class="card">
-
-            <h2>🚑 Ambulance</h2>
-
-            <div class="value">
-                108
-            </div>
-
-            <button onclick="callAmbulance()">
-                Call Now
-            </button>
-
+            <h2>Ambulance</h2>
+            <div class="value">108</div>
+            <button onclick="callAmbulance()">Call Now</button>
         </div>
 
         <div class="card">
+            <h2>Emergency</h2>
+            <div class="value">112</div>
+            <button onclick="callEmergency()">Call Now</button>
+        </div>
 
-            <h2>🛟 Coast Guard</h2>
-
-            <div class="value">
-                1093
-            </div>
-
-            <button onclick="callCoastGuard()">
-                Call Now
-            </button>
-
+        <div class="card">
+            <h2>Coast Guard</h2>
+            <div class="value">1554</div>
+            <button onclick="callCoastGuard()">Call Now</button>
         </div>
 
         <div class="card alert">
-
-            <h2>Emergency SOS</h2>
-
-            <p>
-                Press button during emergency situations.
-            </p>
-
-            <button onclick="sendSOS()">
-                SEND SOS
-            </button>
-
+            <h2>SOS</h2>
+            <p>Press during emergency situations.</p>
+            <button onclick="sendSOS()">SEND SOS</button>
         </div>
 
     </section>
 
-    <section class="forecast">
-
-        <div class="forecast-card">
-
-            <h3>Nearest Hospital</h3>
-
-            <p>Kakinada Government Hospital</p>
-
-        </div>
-
-        <div class="forecast-card">
-
-            <h3>Rescue Team</h3>
-
-            <p>Available 24/7</p>
-
-        </div>
-
-        <div class="forecast-card">
-
-            <h3>Emergency Boats</h3>
-
-            <p>5 Active Units</p>
-
-        </div>
-
-        <div class="forecast-card">
-
-            <h3>Support Status</h3>
-
-            <p>Operational</p>
-
-        </div>
-
-    </section>
-
-
-
-    <script src="js/script.js"></script>
+    <div id="statusMessage" class="status-message"></div>
 
     <script>
+        function showMessage(message){
+            const statusBox = document.getElementById("statusMessage");
+            statusBox.innerText = message;
+            statusBox.style.display = "block";
+        }
+
+        function dialNumber(number){
+            showMessage("Opening phone dialer for: " + number);
+            window.location.href = "tel:" + number;
+        }
 
         function callPolice(){
-
-            alert("Calling Police: 100");
-
+            dialNumber("100");
         }
 
         function callAmbulance(){
+            dialNumber("108");
+        }
 
-            alert("Calling Ambulance: 108");
-
+        function callEmergency(){
+            dialNumber("112");
         }
 
         function callCoastGuard(){
+            dialNumber("1554");
+        }
 
-            alert("Calling Coast Guard: 1093");
-
+        function openSMS(number, message){
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const separator = isIOS ? "&" : "?";
+            window.location.href =
+                "sms:" + number + separator + "body=" + encodeURIComponent(message);
         }
 
         function sendSOS(){
+            showMessage("Preparing SOS message...");
 
-            alert(
-                "SOS Alert Sent Successfully!"
+            const emergencyNumber = "112";
+            const defaultMessage =
+                "SOS! I need emergency help. Please respond immediately.";
+
+            if(!navigator.geolocation){
+                showMessage("Location not supported. Opening SMS without location.");
+                openSMS(emergencyNumber, defaultMessage);
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                function(position){
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const locationLink =
+                        "https://maps.google.com/?q=" + latitude + "," + longitude;
+
+                    const sosMessage =
+                        defaultMessage +
+                        "\nMy current location: " +
+                        locationLink;
+
+                    showMessage("Opening SMS app with your SOS location.");
+                    openSMS(emergencyNumber, sosMessage);
+                },
+                function(){
+                    showMessage("Location permission denied. Opening SMS without location.");
+                    openSMS(emergencyNumber, defaultMessage);
+                }
             );
-
         }
-
     </script>
 
 </body>
-
 </html>
