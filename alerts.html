@@ -6,12 +6,127 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
     <title>Safety Alerts</title>
 
-    <link rel="stylesheet"
-    href="style.css">
+   <style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    body{
+        background:#062b45;
+        color:white;
+        min-height:100vh;
+    }
+
+    header{
+        background:#0077b6;
+        color:white;
+        padding:20px 40px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    nav a{
+        color:white;
+        text-decoration:none;
+        margin-left:20px;
+        font-weight:bold;
+    }
+
+    .main-title{
+        text-align:center;
+        margin-top:40px;
+    }
+
+    .main-title h2{
+        color:white;
+        font-size:40px;
+        margin-bottom:10px;
+    }
+
+    .main-title p{
+        color:#d9e6f2;
+        font-size:18px;
+    }
+
+    .dashboard{
+        min-height:75vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:30px;
+        flex-wrap:wrap;
+        padding:50px;
+    }
+
+    .card{
+        width:280px;
+        padding:35px 25px;
+        border-radius:20px;
+        color:white;
+        text-align:center;
+        box-shadow:0 6px 20px rgba(0,0,0,0.3);
+        transition:0.3s;
+    }
+
+    .card:hover{
+        transform:translateY(-8px);
+    }
+
+    .card h2{
+        margin-bottom:18px;
+        font-size:24px;
+        color:white;
+    }
+
+    .card p{
+        font-size:17px;
+        line-height:1.6;
+        color:white;
+    }
+
+    .danger{
+        background:#d90429;
+    }
+
+    .warning{
+        background:#f77f00;
+    }
+
+    .moderate{
+        background:#0077b6;
+    }
+
+    .safe{
+        background:#2b9348;
+    }
+
+    @media(max-width:768px){
+
+        header{
+            flex-direction:column;
+            text-align:center;
+        }
+
+        nav{
+            margin-top:15px;
+        }
+
+        nav a{
+            margin:0 10px;
+        }
+
+    }
+
+</style>
 
 </head>
 
@@ -33,96 +148,156 @@
 
     </header>
 
+    <div class="main-title">
+
+        <h2>Live Marine Alerts</h2>
+
+        <p>
+            Real-time weather alerts for fishermen safety
+        </p>
+
+    </div>
+
     <section class="dashboard">
 
-        <div class="card alert">
+        <div class="card danger">
 
-            <h2>⚠ Cyclone Warning</h2>
+            <h2>⚠ Storm Warning</h2>
 
-            <p>
-                Heavy sea storms expected near coastal area.
-            </p>
-
-            <button onclick="showAlert()">
-                View Alert
-            </button>
-
-        </div>
-
-        <div class="card alert">
-
-            <h2>⚠ High Tide Alert</h2>
-
-            <p>
-                Avoid fishing activities after 6 PM today.
-            </p>
-
-            <button onclick="showAlert()">
-                Safety Info
-            </button>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Safe Advisory</h2>
-
-            <p>
-                Wear life jackets and carry emergency kits.
+            <p id="stormAlert">
+                Checking storm conditions...
             </p>
 
         </div>
 
-        <div class="card">
+        <div class="card warning">
 
-            <h2>Emergency Update</h2>
+            <h2>🌧 Heavy Rain Alert</h2>
 
-            <p>
-                Coast guard teams are monitoring sea conditions.
+            <p id="rainAlert">
+                Checking rainfall conditions...
+            </p>
+
+        </div>
+
+        <div class="card moderate">
+
+            <h2>🌊 Strong Wind Alert</h2>
+
+            <p id="windAlert">
+                Checking wind speed...
+            </p>
+
+        </div>
+
+        <div class="card safe">
+
+            <h2>✅ Safety Advisory</h2>
+
+            <p id="safeAlert">
+                Loading safety information...
             </p>
 
         </div>
 
     </section>
 
-    <section class="forecast">
+    <script>
 
-        <div class="forecast-card">
+        const apiKey = "e2062d25286c4bc8ba2161804261905";
 
-            <h3>Wave Height</h3>
+        const city = "Kakinada";
 
-            <p>2.5 Meters</p>
+        async function getAlerts(){
 
-        </div>
+            const response = await fetch(
+                `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
+            );
 
-        <div class="forecast-card">
+            const data = await response.json();
 
-            <h3>Wind Direction</h3>
+            const wind = data.current.wind_kph;
 
-            <p>South-East</p>
+            const rain = data.current.precip_mm;
 
-        </div>
+            const condition = data.current.condition.text;
 
-        <div class="forecast-card">
+            // STORM ALERT
 
-            <h3>Danger Level</h3>
+            if(
+                wind > 45 ||
+                condition.includes("Storm") ||
+                condition.includes("Thunder")
+            ){
 
-            <p>Moderate</p>
+                document.getElementById("stormAlert").innerHTML =
+                "Dangerous storm conditions detected. Avoid sea travel and fishing.";
 
-        </div>
+            }
 
-        <div class="forecast-card">
+            else{
 
-            <h3>Fishing Advice</h3>
+                document.getElementById("stormAlert").innerHTML =
+                "No severe storm activity detected.";
 
-            <p>Stay Near Shore</p>
+            }
 
-        </div>
+            // RAIN ALERT
 
-    </section>
+            if(rain > 5){
 
+                document.getElementById("rainAlert").innerHTML =
+                "Heavy rainfall expected in coastal areas.";
 
-    <script src="script.js"></script>
+            }
+
+            else{
+
+                document.getElementById("rainAlert").innerHTML =
+                "Rain conditions are currently normal.";
+
+            }
+
+            // WIND ALERT
+
+            if(wind > 30){
+
+                document.getElementById("windAlert").innerHTML =
+                "Strong winds detected. Fishermen should stay near shore.";
+
+            }
+
+            else{
+
+                document.getElementById("windAlert").innerHTML =
+                "Wind speed is safe for fishing activities.";
+
+            }
+
+            // SAFETY MESSAGE
+
+            if(
+                wind > 45 ||
+                rain > 5
+            ){
+
+                document.getElementById("safeAlert").innerHTML =
+                "Carry emergency kits and avoid deep sea fishing today.";
+
+            }
+
+            else{
+
+                document.getElementById("safeAlert").innerHTML =
+                "Weather conditions are mostly safe for fishing.";
+
+            }
+
+        }
+
+        getAlerts();
+
+    </script>
 
 </body>
 
