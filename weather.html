@@ -6,12 +6,84 @@
     <meta charset="UTF-8">
 
     <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
 
     <title>Weather Details</title>
 
-    <link rel="stylesheet"
-    href="style.css">
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:#eaf6ff;
+        }
+
+        header{
+            background:#0077b6;
+            color:white;
+            padding:20px 40px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-weight:bold;
+        }
+
+        .dashboard{
+            min-height:80vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:30px;
+            flex-wrap:wrap;
+            padding:40px;
+        }
+
+        .card{
+            width:230px;
+            background:#0077b6;
+            padding:35px 20px;
+            border-radius:18px;
+            text-align:center;
+            box-shadow:0 6px 20px rgba(0,0,0,0.15);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h2{
+            color:white;
+            margin-bottom:20px;
+            font-size:24px;
+        }
+
+        .value{
+            font-size:32px;
+            font-weight:bold;
+            color:#222;
+        }
+        body{
+
+    background:#062b45;
+
+    color:white;
+
+    min-height:100vh;
+}
+
+    </style>
 
 </head>
 
@@ -88,44 +160,6 @@
         </div>
 
     </section>
-
-    <section class="forecast">
-
-        <div class="forecast-card">
-
-            <h3>Sea Condition</h3>
-
-            <p>Moderate Waves</p>
-
-        </div>
-
-        <div class="forecast-card">
-
-            <h3>Rain Chance</h3>
-
-            <p>20%</p>
-
-        </div>
-
-        <div class="forecast-card">
-
-            <h3>Visibility</h3>
-
-            <p>8 KM</p>
-
-        </div>
-
-        <div class="forecast-card">
-
-            <h3>UV Index</h3>
-
-            <p>5 Moderate</p>
-
-        </div>
-
-    </section>
-
-
 
     <script src="script.js"></script>
 
