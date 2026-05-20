@@ -1,144 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1.0">
 
-    <title>Safety Alerts</title>
+    <title>Emergency Help</title>
 
-   <style>
-
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family:Arial, sans-serif;
-    }
-
-    body{
-        background:#062b45;
-        color:white;
-        min-height:100vh;
-    }
-
-    header{
-        background:#0077b6;
-        color:white;
-        padding:20px 40px;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-    }
-
-    nav a{
-        color:white;
-        text-decoration:none;
-        margin-left:20px;
-        font-weight:bold;
-    }
-
-    .main-title{
-        text-align:center;
-        margin-top:40px;
-    }
-
-    .main-title h2{
-        color:white;
-        font-size:40px;
-        margin-bottom:10px;
-    }
-
-    .main-title p{
-        color:#d9e6f2;
-        font-size:18px;
-    }
-
-    .dashboard{
-        min-height:75vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:30px;
-        flex-wrap:wrap;
-        padding:50px;
-    }
-
-    .card{
-        width:280px;
-        padding:35px 25px;
-        border-radius:20px;
-        color:white;
-        text-align:center;
-        box-shadow:0 6px 20px rgba(0,0,0,0.3);
-        transition:0.3s;
-    }
-
-    .card:hover{
-        transform:translateY(-8px);
-    }
-
-    .card h2{
-        margin-bottom:18px;
-        font-size:24px;
-        color:white;
-    }
-
-    .card p{
-        font-size:17px;
-        line-height:1.6;
-        color:white;
-    }
-
-    .danger{
-        background:#d90429;
-    }
-
-    .warning{
-        background:#f77f00;
-    }
-
-    .moderate{
-        background:#0077b6;
-    }
-
-    .safe{
-        background:#2b9348;
-    }
-
-    @media(max-width:768px){
-
-        header{
-            flex-direction:column;
-            text-align:center;
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
         }
 
-        nav{
-            margin-top:15px;
+        body{
+            background:#062b45;
+            color:white;
+            min-height:100vh;
+        }
+
+        header{
+            background:#0077b6;
+            color:white;
+            padding:20px 40px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        header h1{
+            font-size:28px;
+        }
+
+        header p{
+            margin-top:5px;
+            font-size:15px;
         }
 
         nav a{
-            margin:0 10px;
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-weight:bold;
         }
 
-    }
+        nav a:hover{
+            text-decoration:underline;
+        }
 
-</style>
+        .dashboard{
+            min-height:80vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:30px;
+            flex-wrap:wrap;
+            padding:40px;
+        }
 
+        .card{
+            width:230px;
+            background:#0077b6;
+            padding:35px 20px;
+            border-radius:18px;
+            text-align:center;
+            box-shadow:0 6px 20px rgba(0,0,0,0.15);
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card h2{
+            color:white;
+            margin-bottom:20px;
+            font-size:24px;
+        }
+
+        .value{
+            font-size:32px;
+            font-weight:bold;
+            color:#222;
+            margin-bottom:22px;
+        }
+
+        button{
+            background:white;
+            color:#0077b6;
+            border:none;
+            padding:12px 22px;
+            border-radius:25px;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#caf0f8;
+        }
+
+        .alert{
+            background:#d62828;
+        }
+
+        .alert button{
+            color:#d62828;
+        }
+
+        .alert p{
+            margin-bottom:20px;
+            line-height:1.5;
+            color:white;
+        }
+
+        .status-message{
+            display:none;
+            max-width:600px;
+            margin:0 auto 30px;
+            background:#0077b6;
+            color:white;
+            padding:15px;
+            border-radius:10px;
+            text-align:center;
+            font-weight:bold;
+        }
+
+        @media(max-width:768px){
+            header{
+                flex-direction:column;
+                text-align:center;
+                gap:15px;
+            }
+
+            nav a{
+                margin:0 8px;
+            }
+
+            .dashboard{
+                min-height:auto;
+                padding:30px 20px;
+            }
+        }
+    </style>
 </head>
-<div id="google_translate_element"></div>
-
-<style>
-    #google_translate_element{
-        position:absolute;
-        left:-9999px;
-        top:-9999px;
-    }
-</style>
-
 <script>
     function googleTranslateElementInit(){
         new google.translate.TranslateElement(
@@ -183,14 +191,12 @@
 </script>
 
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 <body>
 
     <header>
-
         <div>
             <h1>WEATHER CLOUD</h1>
-            <p>Marine Safety Alert System</p>
+            <p>Emergency Support System</p>
         </div>
 
         <nav>
@@ -199,160 +205,114 @@
             <a href="alerts.html">Alerts</a>
             <a href="emergency.html">Emergency</a>
         </nav>
-
     </header>
-
-    <div class="main-title">
-
-        <h2>Live Marine Alerts</h2>
-
-        <p>
-            Real-time weather alerts for fishermen safety
-        </p>
-
-    </div>
 
     <section class="dashboard">
 
-        <div class="card danger">
-
-            <h2>⚠ Storm Warning</h2>
-
-            <p id="stormAlert">
-                Checking storm conditions...
-            </p>
-
+        <div class="card">
+            <h2>Police</h2>
+            <div class="value">100</div>
+            <button onclick="callPolice()">Call Now</button>
         </div>
 
-        <div class="card warning">
-
-            <h2>🌧 Heavy Rain Alert</h2>
-
-            <p id="rainAlert">
-                Checking rainfall conditions...
-            </p>
-
+        <div class="card">
+            <h2>Ambulance</h2>
+            <div class="value">108</div>
+            <button onclick="callAmbulance()">Call Now</button>
         </div>
 
-        <div class="card moderate">
-
-            <h2>🌊 Strong Wind Alert</h2>
-
-            <p id="windAlert">
-                Checking wind speed...
-            </p>
-
+        <div class="card">
+            <h2>Emergency</h2>
+            <div class="value">112</div>
+            <button onclick="callEmergency()">Call Now</button>
         </div>
 
-        <div class="card safe">
+        <div class="card">
+            <h2>Coast Guard</h2>
+            <div class="value">1554</div>
+            <button onclick="callCoastGuard()">Call Now</button>
+        </div>
 
-            <h2>✅ Safety Advisory</h2>
-
-            <p id="safeAlert">
-                Loading safety information...
-            </p>
-
+        <div class="card alert">
+            <h2>SOS</h2>
+            <p>Press during emergency situations.</p>
+            <button onclick="sendSOS()">SEND SOS</button>
         </div>
 
     </section>
 
+    <div id="statusMessage" class="status-message"></div>
+
     <script>
-
-        const apiKey = "e2062d25286c4bc8ba2161804261905";
-
-        const city = "Kakinada";
-
-        async function getAlerts(){
-
-            const response = await fetch(
-                `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`
-            );
-
-            const data = await response.json();
-
-            const wind = data.current.wind_kph;
-
-            const rain = data.current.precip_mm;
-
-            const condition = data.current.condition.text;
-
-            // STORM ALERT
-
-            if(
-                wind > 45 ||
-                condition.includes("Storm") ||
-                condition.includes("Thunder")
-            ){
-
-                document.getElementById("stormAlert").innerHTML =
-                "Dangerous storm conditions detected. Avoid sea travel and fishing.";
-
-            }
-
-            else{
-
-                document.getElementById("stormAlert").innerHTML =
-                "No severe storm activity detected.";
-
-            }
-
-            // RAIN ALERT
-
-            if(rain > 5){
-
-                document.getElementById("rainAlert").innerHTML =
-                "Heavy rainfall expected in coastal areas.";
-
-            }
-
-            else{
-
-                document.getElementById("rainAlert").innerHTML =
-                "Rain conditions are currently normal.";
-
-            }
-
-            // WIND ALERT
-
-            if(wind > 30){
-
-                document.getElementById("windAlert").innerHTML =
-                "Strong winds detected. Fishermen should stay near shore.";
-
-            }
-
-            else{
-
-                document.getElementById("windAlert").innerHTML =
-                "Wind speed is safe for fishing activities.";
-
-            }
-
-            // SAFETY MESSAGE
-
-            if(
-                wind > 45 ||
-                rain > 5
-            ){
-
-                document.getElementById("safeAlert").innerHTML =
-                "Carry emergency kits and avoid deep sea fishing today.";
-
-            }
-
-            else{
-
-                document.getElementById("safeAlert").innerHTML =
-                "Weather conditions are mostly safe for fishing.";
-
-            }
-
+        function showMessage(message){
+            const statusBox = document.getElementById("statusMessage");
+            statusBox.innerText = message;
+            statusBox.style.display = "block";
         }
 
-        getAlerts();
+        function dialNumber(number){
+            showMessage("Opening phone dialer for: " + number);
+            window.location.href = "tel:" + number;
+        }
 
+        function callPolice(){
+            dialNumber("100");
+        }
+
+        function callAmbulance(){
+            dialNumber("108");
+        }
+
+        function callEmergency(){
+            dialNumber("112");
+        }
+
+        function callCoastGuard(){
+            dialNumber("1554");
+        }
+
+        function openSMS(number, message){
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const separator = isIOS ? "&" : "?";
+            window.location.href =
+                "sms:" + number + separator + "body=" + encodeURIComponent(message);
+        }
+
+        function sendSOS(){
+            showMessage("Preparing SOS message...");
+
+            const emergencyNumber = "112";
+            const defaultMessage =
+                "SOS! I need emergency help. Please respond immediately.";
+
+            if(!navigator.geolocation){
+                showMessage("Location not supported. Opening SMS without location.");
+                openSMS(emergencyNumber, defaultMessage);
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                function(position){
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const locationLink =
+                        "https://maps.google.com/?q=" + latitude + "," + longitude;
+
+                    const sosMessage =
+                        defaultMessage +
+                        "\nMy current location: " +
+                        locationLink;
+
+                    showMessage("Opening SMS app with your SOS location.");
+                    openSMS(emergencyNumber, sosMessage);
+                },
+                function(){
+                    showMessage("Location permission denied. Opening SMS without location.");
+                    openSMS(emergencyNumber, defaultMessage);
+                }
+            );
+        }
     </script>
 
 </body>
-
-</html>           
+</html>
